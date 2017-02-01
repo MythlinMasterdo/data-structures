@@ -45,6 +45,47 @@ var Node = function(value) {
   return node;
 };
 
+var LinkedList = function() {
+  this.head = null;
+  this.tail = null;
+}
+
+LinkedList.prototype.addToTail = function(value) {
+  var node = new Node(value);
+  if(this.tail !== null) {
+    this.tail.next = node;
+  }
+  if(this.head === null) {
+    this.head = node;
+  }
+  this.tail = node;
+}
+
+LinkedList.prototype.removeHead = function() {
+  if(this.head !== null) {
+    var oldHead = this.head.value;
+    this.head = this.head.next;
+    return oldHead;
+  }
+  return null;
+}
+
+LinkedList.prototype.contains = function(target) {
+  var node = this.head;
+  while(node !== null) {
+    if(node.value === target) return true;
+    node = node.next;
+  }
+  return false;
+}
+
+var Node = function(value) {
+  var node = {};
+  node.value = value;
+  node.next = null;
+  return node;
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
